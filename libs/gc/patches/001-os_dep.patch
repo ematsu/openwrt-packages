@@ -1,0 +1,20 @@
+diff -ruN gc-7.6.0.orig/os_dep.c gc-7.6.0/os_dep.c
+--- gc-7.6.0.orig/os_dep.c	2016-08-03 04:36:14.000000000 +0900
++++ gc-7.6.0/os_dep.c	2016-09-22 17:02:28.649937038 +0900
+@@ -1255,7 +1255,7 @@
+ #   ifdef IA64
+       DCL_LOCK_STATE;
+ #   endif
+-
++/*
+     if (pthread_getattr_np(pthread_self(), &attr) != 0) {
+         WARN("pthread_getattr_np failed\n", 0);
+         return GC_UNIMPLEMENTED;
+@@ -1263,6 +1263,7 @@
+     if (pthread_attr_getstack(&attr, &(b -> mem_base), &size) != 0) {
+         ABORT("pthread_attr_getstack failed");
+     }
++*/
+     (void)pthread_attr_destroy(&attr);
+ #   ifdef STACK_GROWS_DOWN
+         b -> mem_base = (char *)(b -> mem_base) + size;
